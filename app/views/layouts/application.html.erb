@@ -7,6 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul class="hmenu">
+  <% if customer_signed_in? %>
+    <li>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+    </li>
+  <% elsif admin_signed_in? %>
+    <li>
+      <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>
+    </li>
+  <% elsif doctor_signed_in? %>
+    <li>
+      <%= link_to('Logout', destroy_doctor_session_path, :method => :delete) %>
+    </li>
+  <% end %>
+  </ul>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
 <%= yield %>
 
