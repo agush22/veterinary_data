@@ -61,6 +61,15 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def customer
+    if customer_signed_in?
+      @appointments = current_customer.appointments
+      render :index
+    else
+      redirect_to root
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment

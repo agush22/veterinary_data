@@ -1,7 +1,7 @@
 class Appointment < ActiveRecord::Base
   belongs_to :pet
   belongs_to :doctor
-  belongs_to :customer
+  has_one :customer, through: :pet
 
   validates :pet, presence: true
   validates :doctor, presence: true

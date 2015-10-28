@@ -24,9 +24,9 @@
         <td><%= appointment.doctor.name %></td>
         <td><%= appointment.reminder %></td>
         <td><%= appointment.reason %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', appointment unless customer_signed_in? %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment)  unless customer_signed_in? %></td>
+        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' }  unless customer_signed_in? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Appointment', new_appointment_path %>
+<%= link_to 'New Appointment', new_appointment_path unless customer_signed_in? %>
