@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :require_receptionist, except: :customer
 
   # GET /appointments
   # GET /appointments.json
